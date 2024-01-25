@@ -1,6 +1,7 @@
 import logging
 import random
 import re
+import datetime
 from collections import namedtuple
 
 # Fix Python2/Python3 incompatibility
@@ -27,14 +28,20 @@ class Decomp:
 
 class Eliza:
     def __init__(self):
-        self.initials = []
-        self.finals = []
-        self.quits = []
-        self.pres = {}
-        self.posts = {}
-        self.synons = {}
-        self.keys = {}
-        self.memory = []
+        self.initials = []  #eliza opening response
+        self.finals = []    #eliza exit response
+        self.quits = []     #eliza exiting phrases (from user)
+        self.pres = {}      #eliza
+        self.posts = {}     # ... 
+        self.synons = {}    #synonym words if interchanged
+        self.keys = {}      #keys 
+        self.memory = []    # ...
+
+       #time & date definition
+        self.keys['time'] = Key('time', 1, [Decomp(['*'], False, [['time']])])
+        self.keys['date'] = Key('date', 1, [Decomp(['*'], False, [['date']])])
+        self.keys['day'] = Key('day', 1,   [Decomp(['*'], False, [['day']])] )
+        
 
     def load(self, path):
         key = None
@@ -172,6 +179,24 @@ class Eliza:
         if text.lower() in self.quits:
             return None
 
+        #response for time (includes time + date + day of week)
+        if 'time' in text.lower():
+            now = datetime.datetime.now()
+            time_response = now.strftime("%H:%M:%S: %m-%d-%Y, %A")
+            return time_response
+        
+         #response for date
+        if 'date' in text.lower():
+            now = datetime.datetime.now()
+            date_response = now.strftime("%m-%d-%Y")
+            return date_response
+        
+        #response for day
+        if 'day' in text.lower():
+            now = datetime.datetime.now()
+            day_response = now.strftime("%A")
+            return day_response
+
         text = re.sub(r'\s*\.+\s*', ' . ', text)
         text = re.sub(r'\s*,+\s*', ' , ', text)
         text = re.sub(r'\s*;+\s*', ' ; ', text)
@@ -225,6 +250,8 @@ class Eliza:
 
         print(self.final())
 
+
+    
 
 def main():
     eliza = Eliza()

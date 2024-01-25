@@ -136,13 +136,24 @@ class ElizaTest(unittest.TestCase):
                 'Lets discuss further why your father is afraid of everybody .',
             ])
 
-    def test_response_2(self):
+    # def test_response_2(self):
+    #     el = moderneliza.Eliza()
+    #     el.load('doctor.txt')
+    #     self.assertEqual(el.initial(), 'How do you do.  Please tell me your problem.')
+    #     self.assertIn(el.respond('Hello'), [
+    #         'How do you do. Please state your problem.',
+    #         'Hi. What seems to be your problem ?'])
+    #     self.assertEqual(el.final(), 'Goodbye.  Thank you for talking to me.')
+
+
+    def test_response_3(self):
         el = moderneliza.Eliza()
         el.load('doctor.txt')
-        self.assertEqual(el.initial(), 'How do you do.  Please tell me your problem.')
+        self.assertEqual(el.initial(), 'Hello my name is Eliza.')
         self.assertIn(el.respond('Hello'), [
-            'How do you do. Please state your problem.',
-            'Hi. What seems to be your problem ?'])
+            'How is it going', 
+            'What can I help you with today'
+        ])
         self.assertEqual(el.final(), 'Goodbye.  Thank you for talking to me.')
 
 
