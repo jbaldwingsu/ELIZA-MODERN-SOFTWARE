@@ -1,7 +1,8 @@
-initial: How do you do.  Please tell me your problem.
+initial: Hello my name is Eliza.
 final: Goodbye.  Thank you for talking to me.
 quit: bye
 quit: goodbye
+quit: see you later
 quit: quit
 pre: dont don't
 pre: cant can't
