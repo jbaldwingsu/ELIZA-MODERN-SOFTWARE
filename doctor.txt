@@ -94,8 +94,9 @@ key: perhaps
     reasmb: Don't you know ?
 key: name 15
   decomp: *
-    reasmb: I am not interested in names.
-    reasmb: I've told you before, I don't care about names -- please continue.
+    reasmb: That's a nice name.
+    reasmb: My name is Eliza.
+
 key: deutsch
   decomp: *
     reasmb: goto xforeign
@@ -128,6 +129,20 @@ key: hello
   reasmb: Whats up!
   reasmb: Hello human, Greetings!
   
+key: hi
+  decomp: *
+    reasmb: Hello, how are you?
+
+key: good
+  decomp: *
+    reasmb: That's great, my friend!
+    reasmb: I'm glad.
+    reasmb: Are you really?
+
+key: eliza
+  decomp: *
+    reasmb: That's me.
+
 
 key: computer 50
   decomp: *
@@ -333,7 +348,7 @@ key: why
     reasmb: goto what
 key: everyone 2
   decomp: * @everyone *
-    reasmb: Realy, (2) ?
+    reasmb: Really, (2) ?
     reasmb: Surely not (2) .
     reasmb: Can you think of anyone in particular ?
     reasmb: Who, for example?
