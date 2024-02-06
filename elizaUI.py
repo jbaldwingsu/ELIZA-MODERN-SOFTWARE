@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QTextBrowser, QLineEdit, QPushButton
-from eliza import Eliza
+from moderneliza import Eliza
 #add the ui for elia
 class ElizaUI(QWidget):
     def __init__(self, eliza_instance):
