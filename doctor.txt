@@ -134,15 +134,22 @@ key: hi
     reasmb: Hello, how are you?
 
 key: good
-  decomp: *
-    reasmb: That's great, my friend!
+  decomp: * good *
     reasmb: I'm glad.
     reasmb: Are you really?
+    reasmb: That's great, my friend!
 
 key: eliza
   decomp: *
     reasmb: That's me.
 
+key: thank
+  decomp: *
+    reasmb: You're welcome!
+
+key: thanks
+  decomp: *
+    reasmb: You're welcome!
 
 key: computer 50
   decomp: *
@@ -216,6 +223,8 @@ key: i
     reasmb: Has your treatment made you (3) ?
     reasmb: What makes you (3) just now ?
     reasmb: Can you explan why you are suddenly (3) ?
+  decomp: * i am good *
+    reasmb: I'm glad
   decomp: * i was *
     reasmb: goto was
   decomp: * i @belief * i *
