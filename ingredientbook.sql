@@ -37,6 +37,8 @@ CREATE TABLE `ingredients` (
 LOCK TABLES `ingredients` WRITE;
 /*!40000 ALTER TABLE `ingredients` DISABLE KEYS */;
 INSERT INTO `ingredients` VALUES (3,'garlic'),(4,'olive oil'),(1,'pasta'),(5,'sugar'),(2,'tomato');
+INSERT INTO `ingredients` VALUES (7, 'bbq sauce');
+INSERT INTO `ingredients` VALUES (8, 'onions');  
 /*!40000 ALTER TABLE `ingredients` ENABLE KEYS */;
 UNLOCK TABLES;
 
