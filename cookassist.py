@@ -10,13 +10,13 @@ def connect_to_database():
         database="cooking_assistant"
     )
 
-# Function to find recipes based on ingredients
+# Function to find recipes based on ingredients using query
 def find_recipes(cursor, ingredients):
     query = """
         SELECT DISTINCT recipe_name
         FROM recipes
-        INNER JOIN recipe_ingredients ON recipes.recipe_id = recipe_ingredients.recipe_id
-        INNER JOIN ingredients ON recipe_ingredients.ingredient_id = ingredients.ingredient_id
+        INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
+        INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
         WHERE ingredients.ingredient_name IN (%s)
     """
     cursor.execute(query, ingredients)
@@ -36,19 +36,21 @@ def main():
     db_connection = connect_to_database()
     cursor = db_connection.cursor()
     
-    print("Welcome to Eliza the cooking assistant!")
+    print("Hi I'm Eliza, the cooking assistant!")
     print("Please enter the ingredients you have, separated by commas (e.g., pasta, tomato, garlic):")
     
-    while True:
+    while True:     # exit statement variations for eliza
         user_input = input("> ").lower().strip()
         if user_input == "exit":
             print("Goodbye!")
+        elif (user_input == "bye"):
+            print("See Ya! Hope the food turns out GREAT!")
             break
         elif user_input:
             ingredients = tuple(user_input.split(", "))
             matching_recipes = find_recipes(cursor, ingredients)
             if matching_recipes:
-                print("Based on your ingredients, here are some recipe suggestions:")
+                print("Based on your ingredients, here are some recipes we can make for you:")
                 for recipe in matching_recipes:
                     print("-", recipe)
             else:
