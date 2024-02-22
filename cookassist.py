@@ -10,18 +10,6 @@ def connect_to_database():
         database="cooking_assistant"
     )
 
-# Function to find recipes based on ingredients using query
-# def find_recipes(cursor, ingredients):
-#     query = """
-#         SELECT DISTINCT recipe_name
-#         FROM recipes
-#         INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
-#         INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
-#         WHERE ingredients.ingredient_name IN (%s)
-#     """
-#     cursor.execute(query, ingredients)
-#     return [row[0] for row in cursor]
-
 # Function to find ingredients bases on recipes using query
 def find_ingredients (cursor, recipe_name):
     query = """
@@ -66,16 +54,12 @@ def main():
     db_connection = connect_to_database()
     cursor = db_connection.cursor()
 
-    
-    
     print("Hi I'm Eliza, the cooking assistant!")
     print("Would you like to:")
     print("1. Choose a menu item by number")
     print("2. Input an ingredient to find recipes")
 
-    #print("Please enter the ingredients you have, separated by commas (e.g., pasta, tomato, garlic):")
-    # print("Please enter an item from our menu to view the recipe's ingredients.")
-    
+    # Choice statements    
     choice = input ("> ").strip()
 
     if choice == "1":  
@@ -99,13 +83,12 @@ def main():
                     print(f"Ingredients for {selected_recipe}:")
                     for ingredient in ingredients:
                         print("-", ingredient)
-                    else: 
-                        print(f"Sorry, I couldn't find any recipes matching {selected_recipe}.")
+                        print("Any other menu item?")
                 else:
                     print("Invalid input. Please enter a number corresponding to a recipe.")
             else:
                 print("Invalid input. Please enter a number corresponding to a recipe.")
-
+                break  
         elif choice == "2":
             print("Please enter an ingredient:")
             ingredient = input ("> ").strip()
