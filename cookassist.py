@@ -35,7 +35,12 @@ def find_recipes_by_ingredients (cursor, ingredient):
     cursor.execute(query, (ingredient,))
     return [row[0] for row in cursor]
 
-# Function to fetch all recipes from database
+# Function to fetch all ingredients (Option 2)
+def fetch_all_ingredients(cursor):
+    cursor.execute("SELECT DISTINCT ingredient_name FROM ingredients")
+    return [row[0] for row in cursor]
+
+# Function to fetch all recipes from database (Option 1)
 def fetch_all_recipes(cursor):
     cursor.execute("SELECT recipe_name FROM recipes")
     return [row[0] for row in cursor]
@@ -62,90 +67,73 @@ def main():
     # Choice statements    
     choice = input ("> ").strip()
 
-    if choice == "1":  
-        print("Please enter the number to the menu option:")
-        recipes_menu = fetch_all_recipes(cursor)
-        for i, recipe in enumerate(recipes_menu, start=1):
-            print (f"{i}. {recipe}")
-
-    while True:
-        user_input = input("> ").strip()
-        if (user_input.lower() == "exit" or user_input.lower() == "bye"):
-            print("See you! Hope the food turns out GREAT!")
-            break
-        elif user_input.isdigit():
-            index = int(user_input)
-            if 1 <= index <= len(recipes_menu):
-                selected_recipe = recipes_menu[index -1]
-                print(f"Fetching ingredients for {selected_recipe}...")
-                ingredients = find_ingredients (cursor, selected_recipe)
-                if ingredients:
-                    print(f"Ingredients for {selected_recipe}:")
-                    for ingredient in ingredients:
-                        print("-", ingredient)
-                        print("Any other menu item?")
+    if choice == "1":
+        while True:
+            print("Please enter the number to the menu option:")
+            recipes_menu = fetch_all_recipes(cursor)
+            for i, recipe in enumerate (recipes_menu, start=1):
+                print(f"{i}. {recipe}")
+            
+            user_input = input("> ").strip()
+            if (user_input.lower() == "exit" or user_input.lower() == "bye"):
+                print("See you! Hope the food turns out GREAT!")
+                break
+            elif user_input.isdigit():
+                index = int(user_input)
+                if 1 <= index <= len(recipes_menu):
+                    selected_recipe = recipes_menu[index - 1]
+                    print(f"Fetching ingredients for {selected_recipe}...")
+                    ingredients = find_ingredients(cursor, selected_recipe)
+                    if ingredients:
+                        print(f"Ingredients for {selected_recipe}:")
+                        for ingredient in ingredients:
+                            print("-", ingredient)
+                    else:
+                        print("Invalid input. Please enter a number corresponding to a recipe.")
                 else:
                     print("Invalid input. Please enter a number corresponding to a recipe.")
+                    break
+                print("Would you like to get ingredients for another menu item? (yes/no)")
+                continue_option = input("> ").strip().lower()
+                if continue_option != 'yes':
+                    break
             else:
-                print("Invalid input. Please enter a number corresponding to a recipe.")
-                break  
-        elif choice == "2":
-            print("Please enter an ingredient:")
-            ingredient = input ("> ").strip()
-            recipes = find_recipes_by_ingredients(cursor, ingredient)
-            if recipes:
-                print(f"Recipes that can be made with {ingredient}:")
-                for recipe in recipes:
-                    print("-", recipe)
-            else:
-                print(f"Sorry I couldn't find any recipes with {ingredient}.")
-
-        else:
-            print("Invalid choice. Please enter either 1 or 2")
-
-
-    # recipes_menu = fetch_all_recipes(cursor)
-    # for i, recipe in enumerate(recipes_menu, start = 1):
-    #     print (f"{i}. {recipe}")
+                print("Invalid input. Please enter either a number or 'exit'/'bye'.")
     
-    # while True:     # exit statement variations for eliza
-    #     user_input = input("> ").strip()
-    #     if user_input.lower() == "exit":
-    #         print("See Ya! Hope the food turns out GREAT!")
-    #         break
-    #     elif (user_input.lower() == "bye"):
-    #         print("See Ya! Hope the food turns out GREAT!")
-    #         break
+    elif choice == "2":
+        print ("Here are all the ingredients available:")
+        ingredients_list = fetch_all_ingredients(cursor)
+        for i, ingredient in enumerate(ingredients_list, start=1):
+            print(f"{i}. {ingredient}")
 
-    #     elif user_input.isdigit():
-    #         index = int(user_input)
-    #         if 1 <= index <= len(recipes_menu):
-    #             selected_recipe = recipes_menu[index - 1]
-    #             print(f"Fetching ingredients for {selected_recipe}...")
-    #             ingredients = find_ingredients(cursor, selected_recipe)
-    #             if ingredients:
-    #                 print(f"Ingredients forn {selected_recipe}:")
-    #                 for ingredient in ingredients:
-    #                     print("-", ingredient)
-    #             else:
-    #                 print (f"Sorry, I couldn't find any recipes matching {selected_recipe}.")
-    #         else: 
-    #             print ("Invalid input. Please enter a number corresponding to a recipe.")
-    #     else:
-    #         print (eliza_response(user_input))
+        while True:
+            print("Please enter the number of the ingredient you'd like to find recipes for:")
+            ingredient_index = input("> ").strip()
+            if ingredient_index.isdigit():
+                index = int(ingredient_index)
+                if 1 <= index <= len(ingredients_list):
+                    selected_ingredient = ingredients_list[index - 1]
+                    print(f"Finding recipes for {selected_ingredient}...")
+                    recipes = find_recipes_by_ingredients(cursor, selected_ingredient)
+                    if recipes:
+                        print(f"Recipes that can be made with {selected_ingredient}:")
+                        for recipe in recipes:
+                            print("-", recipe)
+                    else:
+                        print(f"Sorry, I couldn't find any recipes with {selected_ingredient}.")
+                else:
+                    print("Invalid input. Please enter a valid number corresponding to an ingredient.")
+                    break
+                print("Would you like to find recipes for another ingredient? (yes/no)")
+                continue_option = input("> ").strip().lower()
+                if continue_option != 'yes':
+                    break
+            else:
+                print("Invalid input. Please enter a number.")
 
-        # elif user_input:
-        #     ingredients = tuple(user_input.split(", "))
-        #     matching_recipes = find_recipes(cursor, ingredients)
-        #     if matching_recipes:
-        #         print("Based on your ingredients, here are some recipes we can make for you:")
-        #         for recipe in matching_recipes:
-        #             print("-", recipe)
-        #     else:
-        #         print("Sorry, I couldn't find any recipes matching those ingredients.")
-        # else:
-        #     print(eliza_response(user_input))
-
+    else:
+        print("Invalid choice. Please enter either 1 or 2")   
+    
     cursor.close()
     db_connection.close()
 
