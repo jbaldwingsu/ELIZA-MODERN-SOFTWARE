@@ -38,15 +38,19 @@ table_creation_statements = [
 ]
 
 # Data insertion SQL statements
+# Whenever you are adding things to the database make sure you are adding them in this order: recipes, ingredients, cookid. if you do not the program will give you an error.
 data_insertion_statements = {
     "ingredients": [
         #"""INSERT INTO `ingredients` VALUES (3,'garlic'),(4,'olive oil'),(1,'pasta'),(5,'sugar'),(2,'tomato')"""
+        #"""INSERT INTO `ingredients` VALUES (6,'hot sauce'),(7,'cheese'),(8,'beef'),(9,'pork'),(10,'chicken'),(11,'noodles'),(12,'sausage'),(13,'marinara sauce'),(14,'eggplant'),(15,'lettuce'),(16,'croutons'),(17,'ceasar dressing'),(18,'dough')"""
     ],
     "cookid": [
         #"""INSERT INTO `cookid` VALUES (1,1),(2,1),(1,2),(1,3),(2,3),(1,4),(2,4),(3,5)"""
+        #"""INSERT INTO `cookid` VALUES (4,6),(5,8),(6,7),(7,9),(4,10),(8,3),(8,7),(8,11),(8,8),(8,12),(8,13),(9,11),(9,13),(9,14),(9,3),(10,14),(10,13),(10,7),(11,15),(11,7),(11,4),(11,16),(11,17),(12,13),(12,18),(12,7),(12,4)"""
     ],
     "recipes": [
         #"""INSERT INTO `recipes` VALUES (3,'Cake'),(2,'Chicken Stir-Fry'),(1,'Pasta with Tomato Sauce')"""
+       # """INSERT INTO `recipes` VALUES (4,'Hot Wings'),(5,'Hamburger'),(6,'Mac and Cheese'),(7,'Pork Chops'),(8,'Lasagna'),(9,'Spaghetti'),(10,'Eggplant Parmesan'),(11,'Ceasar Salad'),(12,'Margherita Pizza')"""
     ]
 }
 
@@ -79,3 +83,4 @@ for x in mycursor:
 # Close the cursor and database connection
 mycursor.close()
 mydb.close()
+
