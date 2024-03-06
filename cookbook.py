@@ -41,6 +41,7 @@ table_creation_statements = [
 # Whenever you are adding things to the database make sure you are adding them in this order: recipes, ingredients, cookid. if you do not the program will give you an error.
 #You should uncomment what you need to add in your databse and comment it back when you are done or you will get an error.
 data_insertion_statements = {
+    
     "ingredients": [
         #"""INSERT INTO `ingredients` VALUES (3,'garlic'),(4,'olive oil'),(1,'pasta'),(5,'sugar'),(2,'tomato')"""
         #"""INSERT INTO `ingredients` VALUES (6,'hot sauce'),(7,'cheese'),(8,'beef'),(9,'pork'),(10,'chicken'),(11,'noodles'),(12,'sausage'),(13,'marinara sauce'),(14,'eggplant'),(15,'lettuce'),(16,'croutons'),(17,'ceasar dressing'),(18,'dough')"""
@@ -72,6 +73,15 @@ for table, statements in data_insertion_statements.items():
 # for statement in new_ingredients_insertion_statements:
 #     # mycursor.execute(statement)
 
+# Define the values you want to delete from the cookid table
+recipe_id_to_delete = 9
+ingredient_id_to_delete = 14
+
+# Define the SQL statement to delete the entry
+delete_statement = "DELETE FROM cookid WHERE recipe_id = %s AND ingredient_id = %s"
+
+# Execute the delete statement with the specified recipe_id
+mycursor.execute(delete_statement, (recipe_id_to_delete,ingredient_id_to_delete))
         
 # Committing the changes
 mydb.commit()
