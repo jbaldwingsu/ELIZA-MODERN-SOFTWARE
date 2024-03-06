@@ -39,6 +39,7 @@ table_creation_statements = [
 
 # Data insertion SQL statements
 # Whenever you are adding things to the database make sure you are adding them in this order: recipes, ingredients, cookid. if you do not the program will give you an error.
+#You should uncomment what you need to add in your databse and comment it back when you are done or you will get an error.
 data_insertion_statements = {
     "ingredients": [
         #"""INSERT INTO `ingredients` VALUES (3,'garlic'),(4,'olive oil'),(1,'pasta'),(5,'sugar'),(2,'tomato')"""
