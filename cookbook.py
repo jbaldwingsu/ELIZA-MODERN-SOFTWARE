@@ -20,12 +20,12 @@ table_creation_statements = [
         UNIQUE KEY `ingredient_name` (`ingredient_name`)
     ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci""",
     
-    """CREATE TABLE IF NOT EXISTS `recipe_ingredients` (
+    """CREATE TABLE IF NOT EXISTS `cookid` (
         `recipe_id` int NOT NULL,
         `ingredient_id` int NOT NULL,
         PRIMARY KEY (`recipe_id`,`ingredient_id`),
         KEY `ingredient_id` (`ingredient_id`),
-        CONSTRAINT `recipe_ingredients_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`),
+       # CONSTRAINT `recipe_ingredients_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`),
         CONSTRAINT `recipe_ingredients_ibfk_2` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`ingredient_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci""",
     
@@ -48,11 +48,11 @@ data_insertion_statements = {
     ],
     "cookid": [
         #"""INSERT INTO `cookid` VALUES (1,1),(2,1),(1,2),(1,3),(2,3),(1,4),(2,4),(3,5)"""
-        #"""INSERT INTO `cookid` VALUES (4,6),(5,8),(6,7),(7,9),(4,10),(8,3),(8,7),(8,11),(8,8),(8,12),(8,13),(9,11),(9,13),(9,14),(9,3),(10,14),(10,13),(10,7),(11,15),(11,7),(11,4),(11,16),(11,17),(12,13),(12,18),(12,7),(12,4)"""
+        #"""INSERT INTO `cookid` VALUES (4,6),(5,8),(6,7),(7,9),(4,10),(8,3),(8,7),(8,11),(8,8),(8,12),(8,13),(9,11),(9,13),(9,3),(10,14),(10,13),(10,7),(11,15),(11,7),(11,4),(11,16),(11,17),(12,13),(12,18),(12,7),(12,4)"""
     ],
     "recipes": [
         #"""INSERT INTO `recipes` VALUES (3,'Cake'),(2,'Chicken Stir-Fry'),(1,'Pasta with Tomato Sauce')"""
-       # """INSERT INTO `recipes` VALUES (4,'Hot Wings'),(5,'Hamburger'),(6,'Mac and Cheese'),(7,'Pork Chops'),(8,'Lasagna'),(9,'Spaghetti'),(10,'Eggplant Parmesan'),(11,'Ceasar Salad'),(12,'Margherita Pizza')"""
+        #"""INSERT INTO `recipes` VALUES (4,'Hot Wings'),(5,'Hamburger'),(6,'Mac and Cheese'),(7,'Pork Chops'),(8,'Lasagna'),(9,'Spaghetti'),(10,'Eggplant Parmesan'),(11,'Ceasar Salad'),(12,'Margherita Pizza')"""
     ]
 }
 
@@ -74,14 +74,14 @@ for table, statements in data_insertion_statements.items():
 #     # mycursor.execute(statement)
 
 # Define the values you want to delete from the cookid table
-recipe_id_to_delete = 9
-ingredient_id_to_delete = 14
+#recipe_id_to_delete = 9
+#ingredient_id_to_delete = 14
 
 # Define the SQL statement to delete the entry
-delete_statement = "DELETE FROM cookid WHERE recipe_id = %s AND ingredient_id = %s"
+#delete_statement = "DELETE FROM cookid WHERE recipe_id = %s AND ingredient_id = %s"
 
 # Execute the delete statement with the specified recipe_id
-mycursor.execute(delete_statement, (recipe_id_to_delete,ingredient_id_to_delete))
+#mycursor.execute(delete_statement, (recipe_id_to_delete,ingredient_id_to_delete))
         
 # Committing the changes
 mydb.commit()
