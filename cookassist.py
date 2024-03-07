@@ -6,7 +6,7 @@ def connect_to_database():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="thunderbear",
+        password="NationalSassy!23",
         database="cooking_assistant"
     )
 
@@ -18,6 +18,8 @@ def find_ingredients (cursor, recipe_name):
         INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
         INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
         WHERE recipes.recipe_name = %s
+        ORDER BY cookid.recipe_id
+
     """
 
     cursor.execute(query, (recipe_name,))
@@ -31,18 +33,20 @@ def find_recipes_by_ingredients (cursor, ingredient):
         INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
         INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
         WHERE ingredients.ingredient_name = %s
+        ORDER BY cookid.recipe_id
+
     """
     cursor.execute(query, (ingredient,))
     return [row[0] for row in cursor]
 
 # Function to fetch all ingredients (Option 2)
 def fetch_all_ingredients(cursor):
-    cursor.execute("SELECT DISTINCT ingredient_name FROM ingredients")
+    cursor.execute("SELECT ingredient_name FROM ingredients ORDER BY ingredient_id")
     return [row[0] for row in cursor]
 
 # Function to fetch all recipes from database (Option 1)
 def fetch_all_recipes(cursor):
-    cursor.execute("SELECT recipe_name FROM recipes")
+    cursor.execute("SELECT recipe_name FROM recipes ORDER BY recipe_id")
     return [row[0] for row in cursor]
 
 # Eliza-like bot responses (CURRENTLY NOT NEEDED)
