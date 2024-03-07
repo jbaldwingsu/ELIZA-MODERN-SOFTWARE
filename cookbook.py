@@ -88,8 +88,14 @@ mydb.commit()
 
 # Displaying the tables
 mycursor.execute("SHOW TABLES")
-for x in mycursor:
-    print(x)
+print("Tables:")
+tables = mycursor.fetchall()  # Fetch all the results from the SHOW TABLES query
+for table in tables:
+    table_name = table[0]
+    print(f"\nContents of '{table_name}' table:")
+    mycursor.execute(f"SELECT * FROM {table_name}")
+    for row in mycursor.fetchall():
+        print(row)
 
 # Close the cursor and database connection
 mycursor.close()
