@@ -6,7 +6,7 @@ def connect_to_database():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="NationalSassy!23",
+        password="thunderbear",
         database="cooking_assistant"
     )
 
@@ -28,12 +28,12 @@ def find_ingredients (cursor, recipe_name):
 # Function to find recipe based on ingredietns using query
 def find_recipes_by_ingredients (cursor, ingredient):
     query = """
-        SELECT DISTINCT recipe_name
+        SELECT DISTINCT recipes.recipe_name
         FROM recipes
         INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
         INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
         WHERE ingredients.ingredient_name = %s
-        ORDER BY cookid.recipe_id
+        ORDER BY recipes.recipe_name
 
     """
     cursor.execute(query, (ingredient,))
@@ -97,13 +97,66 @@ def main():
                 else:
                     print("Invalid input. Please enter a number corresponding to a recipe.")
                     break
+                
+                # prompts to choose menu item again (option 1)
                 print("Would you like to get ingredients for another menu item? (yes/no)")
                 continue_option = input("> ").strip().lower()
-                if continue_option != 'yes':
+                
+                if continue_option == 'no':
+                    # prompts choice to choose recipes if user doesnt redo option 1
+                    print("Would you like to find recipes from ingredients instead? (yes/no)")
+                    switch_option = input(">").strip().lower()
+                    if switch_option == 'yes':
+                        #HARD CODE HERE
+                        # print("Would you like to find recipes from ingredients instead? (yes/no)")
+                        # switch_option = input(">").strip().lower()
+                        if switch_option == 'yes':
+                                # Hard-code the prompts for choice 2 here
+                                    print ("Here are all the ingredients available:")
+                                    ingredients_list = fetch_all_ingredients(cursor)
+                                    for i, ingredient in enumerate(ingredients_list, start=1):
+                                                print(f"{i}. {ingredient}")
+
+                                    while True:
+                                        print("Please enter the number of the ingredient you'd like to find recipes for:")
+                                        ingredient_index = input("> ").strip()
+                                        if ingredient_index.isdigit():
+                                            index = int(ingredient_index)
+                                            if 1 <= index <= len(ingredients_list):
+                                                selected_ingredient = ingredients_list[index - 1]
+                                                print(f"Finding recipes for {selected_ingredient}...")
+                                                recipes = find_recipes_by_ingredients(cursor, selected_ingredient)
+                                                if recipes:
+                                                        print(f"Recipes that can be made with {selected_ingredient}:")
+                                                        for recipe in recipes:
+                                                            print("-", recipe)
+                                                else:
+                                                    print(f"Sorry, I couldn't find any recipes with {selected_ingredient}.")
+                                            else:
+                                                print("Invalid input. Please enter a valid number corresponding to an ingredient.")
+                                                break
+                                        print("Would you like to find recipes for another ingredient? (yes/no)")
+                                        continue_option = input("> ").strip().lower()
+                                        if continue_option != 'yes':
+                                            break
+                                    else:
+                                        print("Invalid input. Please enter a number.")                
+                        # choice = "2"
+                        
+                    elif switch_option == 'no':
+                        print("See you! Hope the food turns out GREAT!")
+                        break
+                    else:
+                        print("Invalid input. Please enter 'yes' or 'no'.")
+                        break
+                elif continue_option != 'yes':
+                    print("Invalid input. Please enter 'yes' or 'no'.")
                     break
-            else:
-                print("Invalid input. Please enter either a number or 'exit'/'bye'.")
-    
+                else:
+                    print("Invalid input. Please enter either a number or 'exit'/'bye'.")
+                    
+                    
+                
     elif choice == "2":
         print ("Here are all the ingredients available:")
         ingredients_list = fetch_all_ingredients(cursor)
