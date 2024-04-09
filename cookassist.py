@@ -65,7 +65,7 @@ def main():
 
     print("Hi I'm Eliza, the cooking assistant!")
     print("Would you like to:")
-    print("1. Choose a menu item by number")
+    print("1. Choose a recipe by number")
     print("2. Input an ingredient to find recipes")
 
     # Choice statements    
@@ -73,7 +73,7 @@ def main():
 
     if choice == "1":
         while True:
-            print("Please enter the number to the menu option:")
+            print("Please enter the number to the recipe option:")
             recipes_menu = fetch_all_recipes(cursor)
             for i, recipe in enumerate (recipes_menu, start=1):
                 print(f"{i}. {recipe}")
@@ -99,7 +99,7 @@ def main():
                     break
                 
                 # prompts to choose menu item again (option 1)
-                print("Would you like to get ingredients for another menu item? (yes/no)")
+                print("Would you like to get ingredients for another recipe? (yes/no)")
                 continue_option = input("> ").strip().lower()
                 
                 if continue_option == 'no':
