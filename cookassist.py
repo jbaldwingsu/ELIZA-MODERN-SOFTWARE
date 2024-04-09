@@ -28,12 +28,13 @@ def find_ingredients (cursor, recipe_name):
 # Function to find recipe based on ingredietns using query
 def find_recipes_by_ingredients (cursor, ingredient):
     query = """
-        SELECT DISTINCT recipe_name
-        FROM recipes
-        INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
-        INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
-        WHERE ingredients.ingredient_name = %s
-        ORDER BY cookid.recipe_id
+        SELECT DISTINCT recipes.recipe_name
+FROM recipes
+INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
+INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
+WHERE ingredients.ingredient_name = %s
+ORDER BY recipes.recipe_name
+
 
     """
     cursor.execute(query, (ingredient,))
