@@ -2,11 +2,9 @@ import logging
 from flask import Flask, render_template, request,session, jsonify
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS, cross_origin #ModuleNotFoundError: No module named 'flask_cors' = pip install Flask-Cors
-from models import db, User
-# from moderneliza import Eliza  # Import your Eliza chatbot logic
 
-from models import db, User
 from moderneliza import Eliza
+from cookassist import connect_to_database, find_ingredients, find_recipes_by_ingredients, fetch_all_ingredients, fetch_all_recipes
 
 app = Flask(__name__)
   # Initialize your Eliza chatbot
@@ -19,12 +17,14 @@ SQLALCHEMY_ECHO = True
 
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True)
-db.init_app(app)
 eliza = Eliza()
 eliza.load('doctor.txt')
 
-with app .app_context():
-    db.create_all()
+# Connect to MySQL database
+db_connection = connect_to_database()
+cursor = db_connection.cursor()
+
+
 @app.route("/")
 def index():
      return render_template('index.html')
@@ -38,52 +38,19 @@ def chat():
     bot_response = eliza.respond(user_message)
     return {'response': bot_response}
 
-@app.route('/signup', methods=['POST'])
+@app.route('/recipes-by-ingredient', methods=['POST'])
 @cross_origin()
-def signup():
-    email = request.json["email"]
-    password = request.json["password"]
+def get_recipes_by_ingredient():
+    ingredient = request.json["ingredient"]
+    recipes = find_recipes_by_ingredients(cursor, ingredient)
+    return jsonify({"recipes": recipes})
 
-    user_exists = User.query.filter_by(email=email).first() is not None
-
-    if user_exists:
-        return jsonify({"error": "Email already exists"}), 409
-
-    hashed_password =bcrypt.generate_password_hash(password)
-    new_user = User(email=email, password=hashed_password)
-    db.session.add(new_user)
-    db.session.commit()
-
-    session["user_id"] = new_user.id
-    return jsonify({
-        "id": new_user.id,
-        "email":new_user.email
-    })
-
-@app.route('/login', methods=['POST'])
+@app.route('/ingredients', methods=['GET'])
 @cross_origin()
-def login_user():
-    email = request.json["email"]
-    password = request.json["password"]
+def get_all_ingredients():
+    ingredients = fetch_all_ingredients(cursor)
+    return jsonify({"ingredients": ingredients})
 
-    user = User.query.filter_by(email=email).first()
-    
-    if user is None:
-        return jsonify({"error": "Unathorixed Access"}), 401
-    
-    if not bcrypt.check_password_hash(user.password, password):
-        return jsonify({"error": "Unathorized"}), 401
-    
-    session["user_id"] = user.id
-
-    return jsonify({
-        "id":user.id,
-        "email": user.email
-    })
-    # data = request.get_json()
-    # message = data['message']
-    # response = eliza.respond(message)
-    # return jsonify({'response': response})
 
 if __name__ == '__main__':
     app.run(debug=True)
