@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking Assistant Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/images/4bbe5a7b-3975-4ac3-b6b1-8b910d28ae03.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .chat-container {
+            max-width: 90%;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 1000px;
+            max-height: 80vh;
+            overflow-y: auto;
+            margin: 20px; /* Added margin for spacing */
+        }
+        
+        .chat-message {
+            margin-bottom: 10px;
+        }
+        
+        .user-message {
+            padding: 8px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-align: right;
+            clear: both;
+            position: relative; /* Added position for tooltips */
+        }
+        
+        .user-message:hover::after { /* Tooltip effect on hover */
+            content: "Click to interact";
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 4px;
+            border-radius: 4px;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            z-index: 1;
+            pointer-events: none; /* Prevents tooltip from blocking clicks */
+        }
+        
+        .bot-message {
+            padding: 8px;
+            background-color: #f0f0f0;
+            color: #333;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-align: left;
+            clear: both;
+        }
+        
+        #userInput {
+            width: calc(100% - 85px); /* Adjusted input width for button */
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        #sendButton {
+            padding: 8px 20px; /* Increased button padding */
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        #sendButton:hover {
+            background-color: #0056b3;
+        }
+        
+        .typing-indicator {
+            color: #333;
+            font-style: italic;
+            margin-bottom: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 0.5s infinite alternate;
+        }
+        
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        .dark-mode-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #060606;
+            cursor: pointer;
+        }
+        
+        .dark-mode-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .title {
+            font-size: 40px;
+            font-style: italic;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center; /* Center the title */
+        }
+        
+        @media screen and (max-width: 600px) {
+            .chat-container {
+                max-width: 100%;
+                border-radius: 0;
+            }
+        
+            #userInput {
+                width: calc(100% - 80px);
+            }
+        
+            .title {
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+        
+            .dark-mode-button {
+                top: 10px;
+                right: 10px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container" id="chatbox">
+        <!-- Chat messages will be displayed here -->
+    </div>
+    <input type="text" id="userInput" placeholder="Type your message here...">
+    <button id="sendButton" onclick="sendMessage()">Send</button>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("userInput").value;
+            displayMessage("User: " + userInput);
+            
+            // AJAX request to send user input t
+        }
