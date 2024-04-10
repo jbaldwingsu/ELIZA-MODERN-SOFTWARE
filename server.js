@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { spawn } = require('child_process');
+const path = require('path'); // Import the 'path' module
+
 const app = express();
 const port = 3000;
 
@@ -10,6 +12,15 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/ui.html');
 });
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public'), {
+    setHeaders: (res, filePath) => {
+        if (filePath.endsWith('.css')) {
+            res.setHeader('Content-Type', 'text/css');
+        }
+    }
+}));
 
 // Handle user input
 app.post('/user_input', (req, res) => {
