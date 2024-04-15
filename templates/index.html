@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eliza Chatbot</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="server.js"></script>
+  </head>
+
+  <body>
+    <div class="chat-container">
+      <h1 class="title">CookAssist AI</h1>
+      <div id="chat-messages" class="chat-messages"></div>
+      <div class="typing-indicator">Typing...</div>
+      <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Enter your message" />
+        <button type="submit" id="send-button">Send</button>
+      </form>
+      <button id="dark-mode-button" class="dark-mode-button">Dark Mode</button>
+    </div>
+
+    <script>
+      const form = document.getElementById("chat-form");
+      const userInput = document.getElementById("user-input");
+      const chatMessages = document.getElementById("chat-messages");
+      const typingIndicator = document.querySelector(".typing-indicator");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const userMessage = userInput.value.trim();
+        if (userMessage === "") return;
+
+        const userMessageDiv = document.createElement("div");
+        userMessageDiv.classList.add("chat-message", "user-message");
+        userMessageDiv.innerText = userMessage;
+        chatMessages.appendChild(userMessageDiv);
+        typingIndicator.style.display = "block";
+
+        const response = await fetch("/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            user_input: userMessage,
+          }),
+        }).then((res) => res.json());
+
+        const botMessageDiv = document.createElement("div");
+        botMessageDiv.classList.add("chat-message", "bot-message");
+        botMessageDiv.innerText = response.response;
+        chatMessages.appendChild(botMessageDiv);
+        typingIndicator.style.display = "none";
+
+        userInput.value = "";
+      });
+
+      const darkModeButton = document.getElementById("dark-mode-button");
+      const body = document.body;
+
+      darkModeButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        const buttonText = body.classList.contains("dark-mode")
+          ? "Light Mode"
+          : "Dark Mode";
+        darkModeButton.innerText = buttonText;
+      });
+    </script>
+  </body>
+</html>
