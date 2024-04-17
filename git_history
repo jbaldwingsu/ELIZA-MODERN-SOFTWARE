@@ -1,0 +1,339 @@
+commit 99be72643a9b4aecba22c9a24263b078acf2c9a8
+Author: Osiris Corker <96017072+Osiris34@users.noreply.github.com>
+Date:   Wed Apr 17 14:23:03 2024 -0400
+
+    Add files via upload
+    
+    Fully working ui but we can still ake it look a little nicer.
+
+commit f82593c93282c3f18bf5867e9a0744127c69f21f
+Author: Osiris Corker <96017072+Osiris34@users.noreply.github.com>
+Date:   Tue Apr 16 13:59:48 2024 -0400
+
+    Add files via upload
+    
+    This the pyqt5 ui and it works but needs to be nicer and upgraded still.
+
+commit 488b467902f14b7167cfd643b6917a02cb5f71fb
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Mon Apr 15 18:41:08 2024 -0400
+
+    update!
+
+commit 8d4331b3225878fcef90e62e453063f096daa46a
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Mon Apr 15 17:55:33 2024 -0400
+
+    Small change
+
+commit 5b0fd554b6bfae65dcdf0236901996cd683d6df3
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Wed Apr 10 20:23:14 2024 -0400
+
+    UI site semi working
+
+commit eab379e0b8766ce28067d325fac070d95ad8737c
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Wed Apr 10 19:42:36 2024 -0400
+
+    Delete Un-needed Files
+
+commit c9b7aedee0c3e62551c1cea9a2f949b5d9c2a42a
+Merge: 74bb60b a7f3572
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Wed Apr 10 19:13:30 2024 -0400
+
+    Merge branch 'main' of https://github.com/jbaldwingsu/ELIZA-MODERN-SOFTWARE
+
+commit 74bb60ba864f81cb31601a1cb9436a92e47d7c50
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Wed Apr 10 19:13:16 2024 -0400
+
+    Node modules + ui.html
+    
+    all the extra files are npm installed modules for node jss
+
+commit a7f35728fdd5e00e80a3e573e3078cafcda0d5c1
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Wed Apr 10 15:53:35 2024 -0400
+
+    Adding more recipes!
+    
+    Don't forget to comment/uncomment what you need.
+
+commit 36f2485927c501aec6e4e73f732f9ef078d816bc
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Wed Apr 10 14:49:08 2024 -0400
+
+    UI Added
+    
+    merge UI, having some errors with launching
+
+commit 5f65e1b3ee31bac02b178f69522940fbffb59317
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Wed Apr 10 11:57:52 2024 -0400
+
+    Functionality with choices fixed
+
+commit cfec911562357faba741987a87a467a48f8ea354
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Tue Apr 9 16:34:54 2024 -0400
+
+    Update cookassist.py
+
+commit 481493435deaf41b30aef88dafc16ee3acce0858
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Tue Apr 9 15:45:20 2024 -0400
+
+    Update cookassist.py
+
+commit ad58d067a612ca124c8554cab6afa2953b80d98b
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Thu Mar 7 13:10:09 2024 -0500
+
+    fixing
+    
+    fixing the error with the ingredient and recipe ids
+
+commit b59062658923e3c8de7d8ce01064cd029d8d277c
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Thu Mar 7 12:46:28 2024 -0500
+
+    Update Lines 91-98
+    
+    This is to make it easier for us to see what exactly was added or changed in the database when running the code.
+
+commit e284d3feccb158cd3be4f07646aad0f600778b7d
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Wed Mar 6 19:23:24 2024 -0500
+
+    Update cookbook.py
+
+commit acc83d82f8f00f52a8f9b7087d65cce84763cc2e
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Wed Mar 6 14:39:53 2024 -0500
+
+    Update cookbook.py
+    
+    This is to delete a mistake!
+
+commit 1ccae5ca78c1b69d6f7a8e03f28ec6656fe5de5a
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Wed Mar 6 14:12:55 2024 -0500
+
+    Update cookbook.py
+    
+    Just adding comments to make sure everyone can understand the code and what to do.
+
+commit 8c856858f72b73219631669d716440a5a4942df0
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Wed Mar 6 13:52:47 2024 -0500
+
+    Update cookbook.py
+    
+    This is an easier way to update the database and make sure everyone has the same recipes and ingredients.
+
+commit bd892800276080d5e791a45c36f523e30d32276b
+Merge: 67ce8ac 5b5bae6
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Tue Mar 5 13:15:32 2024 -0500
+
+    Merge branch 'main' of https://github.com/jbaldwingsu/ELIZA-MODERN-SOFTWARE
+
+commit 67ce8ac761df670756dd0cf2421087510b872b98
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Tue Mar 5 13:15:21 2024 -0500
+
+    DEMO READY CODE (03/05)
+    
+    Code does desired tasks and can be ran correctly, more room for improvement though
+
+commit 5b5bae67736469f463cefecc102a7859c4e6e986
+Author: ss37939 <97569197+ss37939@users.noreply.github.com>
+Date:   Wed Feb 28 15:09:28 2024 -0500
+
+    Adding the new file for MySQL database
+
+commit 010bb2fab21e7189cc4f424e6a3e67067446b970
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Thu Feb 22 14:06:53 2024 -0500
+
+    Removed Unnecessary Lines
+
+commit 2ea616938375a0f3de207986078fa392bcd32ac4
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Thu Feb 22 13:44:43 2024 -0500
+
+    Choice Option Implemented
+
+commit 4f5c4ab42297e2026937db057a56cdda162d8d61
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Thu Feb 22 13:09:24 2024 -0500
+
+    Ingredient List From User Request WORKING
+    
+    Now able to display list of ingredients that goes into a recipe
+
+commit 0ce0efd449cff81128d06aaab8d217b7f1bdb8ba
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Tue Feb 20 10:38:36 2024 -0500
+
+    Fixed error in query selection statement
+
+commit c104d25984cc545da5b2400b38a1f59d52baccf8
+Merge: aa4cbc5 240e1fe
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Mon Feb 19 15:23:46 2024 -0500
+
+    Merge branch 'main' of https://github.com/jbaldwingsu/ELIZA-MODERN-SOFTWARE
+
+commit aa4cbc5bf3c176961e15478bad82a08d3096dc7a
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Mon Feb 19 15:23:42 2024 -0500
+
+    TEST ADD INGREDIENTS
+    
+    attempt to check connection across devicecs
+
+commit 240e1fe1df936c90cd6c4627b72b65dde8376449
+Author: Osiris Corker <96017072+Osiris34@users.noreply.github.com>
+Date:   Sun Feb 18 23:28:29 2024 -0500
+
+    Update README.md
+
+commit f91fc6949bfc465b4db4fda077f1e6c3b843353f
+Author: Jordan Baldwin <150172847+jbaldwingsu@users.noreply.github.com>
+Date:   Thu Feb 15 13:55:09 2024 -0500
+
+    Ingredient SQL FIle
+
+commit d6f30e4df495a9add0e709df5ee12b894f485832
+Merge: 359ddf5 a8d606a
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Sun Feb 11 17:16:30 2024 -0500
+
+    Merge branch 'main' of https://github.com/jbaldwingsu/ELIZA-MODERN-SOFTWARE
+
+commit a8d606a9bf890e4fabb0467ef8d91d4c4312210e
+Author: Jordan Baldwin <150172847+jbaldwingsu@users.noreply.github.com>
+Date:   Thu Feb 8 21:23:58 2024 -0500
+
+    Alternative Eliza - Cook Assistant
+    
+    Start of new code for Eliza to be a chatbot for recipes given certain ingredients
+
+commit 359ddf552277e15946bb4ca9cd44ef4c8f2e87fd
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Thu Feb 8 12:58:36 2024 -0500
+
+    Update doctor.txt
+
+commit 269d18b6e30d8bc1d50d87d15ca2a34519053f8a
+Author: Osiris Corker <96017072+Osiris34@users.noreply.github.com>
+Date:   Tue Feb 6 10:17:32 2024 -0500
+
+    new import changed to modern eliza
+
+commit ff0015293bbc684932065cb8f36fa3ebaa7c385b
+Author: Osiris Corker <96017072+Osiris34@users.noreply.github.com>
+Date:   Mon Feb 5 15:56:58 2024 -0500
+
+    Add files via upload
+    
+    the ui for eliza
+
+commit 77724008de6d18ff0f40249814e086a9eaa68311
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Tue Jan 30 13:18:17 2024 -0500
+
+    Update doctor.txt
+
+commit 39d5621c1a48587fe41fe03b75a85e119ebaa746
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Thu Jan 25 15:03:28 2024 -0500
+
+    Date/Time/Day Code Added
+    
+    answers and response Eliza with ability to respond with the day of the week, time of day or date on certain keywords 'keys'
+
+commit 00964fa8cbc0a2e267d8376b2cee5fd098bf6a02
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Thu Jan 25 13:34:58 2024 -0500
+
+    Introduced Test
+
+commit db566dc98ffacf016d3062e12a3d00918e02ead9
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Thu Jan 25 13:20:28 2024 -0500
+
+    Test On Separate Document
+
+commit 9d7ea54277c7406fc698f4a557e05e74a373748c
+Merge: d568a6a fd421f1
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Tue Jan 23 12:44:45 2024 -0500
+
+    Merge branch 'main' of https://github.com/jbaldwingsu/ELIZA-MODERN-SOFTWARE
+
+commit d568a6a50da707d9a87a850f6a2e7aa5014c2f82
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Tue Jan 23 12:44:25 2024 -0500
+
+    moderneliza.py
+    
+    This is the document we will add to and modify based on the provided eliza.py document
+
+commit fd421f193f0b96de16f554cb29a7232667841a2f
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Tue Jan 23 12:40:20 2024 -0500
+
+    Update README.md
+    
+    Hi guys!
+
+commit a7a287bb4627ae0a8bb4f73b320046ccb5ea680a
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Tue Jan 23 12:30:32 2024 -0500
+
+    Name Addition
+
+commit dbdd3e52fb3fd9458ca141989d10ae0b0777586c
+Merge: bf7f021 1e9f618
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Tue Jan 23 12:29:15 2024 -0500
+
+    Merge branch 'main' of https://github.com/jbaldwingsu/ELIZA-MODERN-SOFTWARE
+
+commit bf7f021dd48c1ef5dce3f06e63d5aad83fb905ac
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Tue Jan 23 12:26:42 2024 -0500
+
+    Name Addition / Plan Of Action
+
+commit 1e9f618990026cc81b4dda7e09b64d812f91674a
+Author: jbaldwingsu <150172847+jbaldwingsu@users.noreply.github.com>
+Date:   Tue Jan 23 12:26:11 2024 -0500
+
+    Update README.md
+
+commit a995299544838e48dfb79fa5585dfc5efc55c8de
+Author: jbaldwingsu <150172847+jbaldwingsu@users.noreply.github.com>
+Date:   Tue Jan 23 12:24:03 2024 -0500
+
+    Update README.md
+    
+    PLAN OF ACTION
+
+commit 744ba402af45ea09504cb1ab61563cb844d0c78e
+Author: jbaldwingsu <150172847+jbaldwingsu@users.noreply.github.com>
+Date:   Tue Jan 23 12:21:06 2024 -0500
+
+    eliza-master file
+    
+    Use this to test and run the eliza program yourself when you open it and land in the "/eliza-master" directory
+
+commit e1c48bc19cb7b27afe4edc9927931a2828a0d1db
+Author: jbaldwingsu <150172847+jbaldwingsu@users.noreply.github.com>
+Date:   Tue Jan 23 12:04:38 2024 -0500
+
+    Initial commit
