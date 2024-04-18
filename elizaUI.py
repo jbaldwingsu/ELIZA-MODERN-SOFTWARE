@@ -55,7 +55,7 @@ class CookingAssistantApp(QMainWindow):
         return mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Osiris34",
+            password="thunderbear",
             database="cooking_assistant"
         )
 
@@ -112,6 +112,11 @@ class CookingAssistantApp(QMainWindow):
                     self.output_textedit.append("Invalid input. Please enter a number corresponding to a recipe.")
 
         elif choice == "Input an ingredient to find recipes":
+            self.output_textedit.append("Please select an ingredient")
+            ingredients_menu = self.fetch_all_ingredients()
+            for i, ingredient in enumerate(ingredients_menu):
+                self.output_textedit.append(f"{i}. {ingredient}")
+                
             selected_ingredient, ok_pressed = QInputDialog.getText(
                 self, "Ingredient Selection", "Enter the name of the ingredient:"
             )
@@ -123,7 +128,7 @@ class CookingAssistantApp(QMainWindow):
                     for recipe in recipes:
                         self.output_textedit.append(f"- {recipe}")
                 else:
-                    self.output_textedit.append(f"Sorry, I couldn't find any recipes with {selected_ingredient}.")
+                    self.output_textedit.append(f"Sorry, I couldn't find any recipes with {selected_ingredient}, double check your spelling.")
 
     def fetch_all_ingredients(self):
         self.cursor.execute("SELECT ingredient_name FROM ingredients ORDER BY ingredient_id")

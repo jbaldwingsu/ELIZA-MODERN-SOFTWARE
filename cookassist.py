@@ -11,44 +11,42 @@ def connect_to_database():
     )
 
 # Function to find ingredients bases on recipes using query
-def find_ingredients (cursor, recipe_name):
+def find_ingredients(cursor, recipe_name):
     query = """
-        SELECT ingredient_name
+        SELECT ingredients.ingredient_name
         FROM recipes
         INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
         INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
         WHERE recipes.recipe_name = %s
         ORDER BY cookid.recipe_id
-
     """
-
     cursor.execute(query, (recipe_name,))
-    return [row[0] for row in cursor]
+    return [row[0] for row in cursor.fetchall()]
 
 # Function to find recipe based on ingredietns using query
-def find_recipes_by_ingredients (cursor, ingredient):
+def find_recipes_by_ingredients(cursor, ingredient):
     query = """
         SELECT DISTINCT recipes.recipe_name
-FROM recipes
-INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
-INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
-WHERE ingredients.ingredient_name = %s
-ORDER BY recipes.recipe_name
-
-
+        FROM recipes
+        INNER JOIN cookid ON recipes.recipe_id = cookid.recipe_id
+        INNER JOIN ingredients ON cookid.ingredient_id = ingredients.ingredient_id
+        WHERE ingredients.ingredient_name = %s
+        ORDER BY recipes.recipe_name
     """
     cursor.execute(query, (ingredient,))
-    return [row[0] for row in cursor]
+    return [row[0] for row in cursor.fetchall()]
 
 # Function to fetch all ingredients (Option 2)
 def fetch_all_ingredients(cursor):
-    cursor.execute("SELECT ingredient_name FROM ingredients ORDER BY ingredient_id")
-    return [row[0] for row in cursor]
+    query = "SELECT ingredient_name FROM ingredients ORDER BY ingredient_id"
+    cursor.execute(query)
+    return [row[0] for row in cursor.fetchall()]
 
 # Function to fetch all recipes from database (Option 1)
 def fetch_all_recipes(cursor):
-    cursor.execute("SELECT recipe_name FROM recipes ORDER BY recipe_id")
-    return [row[0] for row in cursor]
+    query = "SELECT recipe_name FROM recipes ORDER BY recipe_id"
+    cursor.execute(query)
+    return [row[0] for row in cursor.fetchall()]
 
 # Eliza-like bot responses (CURRENTLY NOT NEEDED)
 def eliza_response(input_text):
