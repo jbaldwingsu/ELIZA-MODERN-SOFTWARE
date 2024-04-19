@@ -1,3 +1,24 @@
+commit 468888dc52bf97eb9b023b1752a799953f83497e
+Merge: 0f0bd65 2474159
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Thu Apr 18 13:30:19 2024 -0400
+
+    Merge branch 'main' of https://github.com/jbaldwingsu/ELIZA-MODERN-SOFTWARE
+
+commit 0f0bd6563c7c42ffb0290117a6be67bfe453bb2e
+Author: ss37939 <ss37939@georgiasouthern.edu>
+Date:   Thu Apr 18 13:30:16 2024 -0400
+
+    Update cookbook.py
+
+commit 24741596d7087d7ad78ef85110cbd8257bce39ca
+Author: jbaldwingsu <jb56462@georgiasouthern.edu>
+Date:   Wed Apr 17 16:38:34 2024 -0400
+
+    Pytest Integrated
+    
+    5/7 Currently Passing, Updated README file with instructions on running program
+
 commit 99be72643a9b4aecba22c9a24263b078acf2c9a8
 Author: Osiris Corker <96017072+Osiris34@users.noreply.github.com>
 Date:   Wed Apr 17 14:23:03 2024 -0400
