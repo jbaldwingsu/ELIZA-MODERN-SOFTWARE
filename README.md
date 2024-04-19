@@ -10,7 +10,7 @@ clear the confusion in the kitchen, once and for all!
 
 1. ** First Steps **
 Download ELIZA-MODERN-SOFTWARE.zip'
-Unzip contents, navigate to 'eliza' folder directory
+Unzip contents
 
 2. ** To Run Support Program (With UI) **
 In the folder contains 'elizaUI.py', this is the python program to run:
